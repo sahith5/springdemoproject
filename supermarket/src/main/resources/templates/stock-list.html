@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders List Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>-->
+</head>
+<body>
+
+<form name="logoutForm" th:action="@{/logout}" method="post" style=" margin-top: 1px;
+     margin-right: 2px;
+     position:absolute;
+     top:0;
+     right:0;">
+    <input class="btn btn-warning" type="submit" value="Sign Out"/>
+</form>
+
+<div style="width: 600px;height: auto;margin-left: auto;margin-right: auto">
+item deleted successfully
+</div>
+<button type="button" class="btn btn-success" style="margin: 2px"><a th:href="@{/successHandler}" >Back to Home Page</a></button>
+</body>
+</html>
