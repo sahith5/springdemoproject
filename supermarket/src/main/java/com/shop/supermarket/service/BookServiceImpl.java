@@ -9,34 +9,43 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class BookServiceImpl implements bookservice{
+public class BookServiceImpl implements Bookservice {
 
     @Autowired
     BooksRepository booksrepository;
 
     @Override
-    @Transactional
     public void saveBook(Books book) {
-
             booksrepository.save(book);
     }
 
     @Override
-    @Transactional
+
     public List<Books> getbooks() {
         return booksrepository.findAll();
     }
 
     @Override
-    @Transactional
     public Books getBookById(int id) {
-        return booksrepository.findById(id).get();
+        Optional<Books> book = booksrepository.findById(id);
+        Books books;
+        if(book.isPresent())
+        {
+            books=book.get();
+
+        }
+        else
+        {
+            books=null;
+        }
+        return books;
+
     }
 
     @Override
-    @Transactional
     public void deleteById(int id) {
         booksrepository.deleteById(id);
     }

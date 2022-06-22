@@ -1,12 +1,14 @@
 package com.shop.supermarket.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="roles")
-public class Roles {
+public @Data class Roles {
     @Id
     @Column(name="authority")
     private String authority;

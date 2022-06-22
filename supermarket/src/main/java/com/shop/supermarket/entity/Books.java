@@ -1,6 +1,7 @@
 package com.shop.supermarket.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,5 +66,20 @@ public class Books {
     public Books(String name, int cost) {
         this.name = name;
         this.cost = cost;
+    }
+
+    public Books(int id, String name, int cost) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                '}';
     }
 }

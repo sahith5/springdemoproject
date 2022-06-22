@@ -4,7 +4,7 @@ package com.shop.supermarket.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Entity
 @Table(name = "users")
@@ -30,7 +30,14 @@ public class Customer {
     public Customer() {
     }
 
-
+    public Customer(int id, String username, String password, String email, String address, String number) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.number = number;
+    }
 
     public Customer(String username, String password, String email, String address, String number) {
         this.username = username;
@@ -112,7 +119,7 @@ public class Customer {
     {
         if(books==null)
         {
-            books=new ArrayList<Books>();
+            books=new ArrayList<>();
         }
         books.add(book);
     }

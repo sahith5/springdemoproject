@@ -1,7 +1,7 @@
 package com.shop.supermarket.controller;
 
 
-import com.shop.supermarket.entity.Customer;
+
 import com.shop.supermarket.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,13 +18,13 @@ public class BasicController {
     private UserService usersService;
 
     @Autowired
-    private bookservice itemsService;
+    private Bookservice itemsService;
 
 
     @Autowired
     private RolesService rolesService;
     @Autowired
-    private bookservice bookService;
+    private Bookservice bookService;
 
 
 
@@ -55,27 +55,6 @@ public class BasicController {
         return "denied";
     }
 
-    @GetMapping("/registerPage")
-    public String registerPage()
-    {
-        return "register";
-    }
-
-    @PostMapping("/saveNewUser")
-    public String registerPage(@ModelAttribute("user") Customer user, Model model)
-    {
-        if (usersService.findByUsername(user.getUsername())!=null)
-        {
-            return "duplicate-user";
-        }
-        user.setEnabled((short) 1);
-        System.out.println(user);
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        usersService.saveCustomer(user);
-        model.addAttribute("finalUser",user);
-        return "redirect:/loginPage?user=True";
-    }
 
     @GetMapping("/role")
     public String role()
@@ -83,28 +62,5 @@ public class BasicController {
         return "role-page";
     }
 
-//    @PostMapping("/saveRole")
-//    public String saveRole(@RequestParam("authority") Roles role, @RequestParam("username") String username, Model model, Principal loggedUser)
-//    {
-//        if(!usersService.findByUsername(username).getRoles().isEmpty())
-//        {
-//            return "prompt-page";
-//        }
-//
-//        Users tempUser = usersService.findByUsername(username);
-//        Roles tempRole = rolesService.getRolesById(role.getAuthority());
-//        tempUser.addRole(tempRole);
-//        tempRole.addUser(tempUser);
-//        usersService.saveUser(tempUser);
-//        return "redirect:/loginPage";
-//    }
-
-
-//    @PostMapping("/deleteUser")
-//    public String deleteUser(Principal loggedUser)
-//    {
-//        usersService.deleteUser(usersService.findByUsername(loggedUser.getName()));
-//        return "redirect:/loginPage";
-//    }
 
 }
